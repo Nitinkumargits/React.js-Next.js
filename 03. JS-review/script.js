@@ -149,7 +149,7 @@ const book = getBook(1);
 //----------------------------------------------------
 // Rest-Spread operator
 // Rest- operator
-const { title, author, genres } = book;
+const { title, author, genres, pages, publicationDate } = book;
 const [primaryGenere, SecondaryGener, ...othersGenere] = genres;
 // console.log(primaryGenere, SecondaryGener, othersGenere);
 
@@ -160,5 +160,10 @@ const newGenera = ["epic nitin", ...genres, "cute genera"];
 
 //object
 
-const updatebooks = { pages: 122, ...book, hasMoviePublication: "20-19-24" };
-console.log(updatebooks);
+const updatebooks = { ...book, hasMoviePublication: "20-19-24", pages: 122 };
+// console.log(updatebooks);
+
+const summary = `${title}, a ${pages}-page long book,was written by ${author} and published in ${
+  publicationDate.split("-")[0]
+}`;
+console.log(summary);
