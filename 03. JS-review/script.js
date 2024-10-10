@@ -165,5 +165,5 @@ const updatebooks = { ...book, hasMoviePublication: "20-19-24", pages: 122 };
 
 const summary = `${title}, a ${pages}-page long book,was written by ${author} and published in ${
   publicationDate.split("-")[0]
-}`;
+} ${pages > 1000 ? "over thosand " : "within range"}`;
 console.log(summary);
