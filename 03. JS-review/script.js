@@ -162,8 +162,9 @@ const newGenera = ["epic nitin", ...genres, "cute genera"];
 
 const updatebooks = { ...book, hasMoviePublication: "20-19-24", pages: 122 };
 // console.log(updatebooks);
+const getYear = (str) => str.split("-")[0];
 
-const summary = `${title}, a ${pages}-page long book,was written by ${author} and published in ${
-  publicationDate.split("-")[0]
-} ${pages > 1000 ? "over thosand " : "within range"}`;
+const summary = `${title}, a ${pages}-page long book,was written by ${author} and published in ${getYear(
+  publicationDate
+)} ${pages > 1000 ? "over thosand " : "within range"}`;
 console.log(summary);
