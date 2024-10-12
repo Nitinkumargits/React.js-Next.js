@@ -174,4 +174,7 @@ const books = getBooks();
 const longBookWithMovie = books
   .filter((book) => book.pages > 500)
   .filter((book) => book.hasMovieAdaptation);
-console.log(longBookWithMovie);
+// console.log(longBookWithMovie);
+
+const pagesAllBooks = books.reduce((acc, book) => acc + book.pages, 0);
+console.log(pagesAllBooks);
