@@ -143,28 +143,35 @@ function getBook(id) {
   return data.find((d) => d.id === id);
 }
 
-const book = getBook(1);
+// const books = getBook();
 // const { title, author } = book;
 // console.log(`title : ${title} \nauthor : ${author}`);
 //----------------------------------------------------
 // Rest-Spread operator
 // Rest- operator
-const { title, author, genres, pages, publicationDate } = book;
-const [primaryGenere, SecondaryGener, ...othersGenere] = genres;
+// const { title, author, genres, pages, publicationDate } = books;
+// const [primaryGenere, SecondaryGener, ...othersGenere] = genres;
 // console.log(primaryGenere, SecondaryGener, othersGenere);
 
-// Spread operator
+// // Spread operator
 
-const newGenera = ["epic nitin", ...genres, "cute genera"];
-// console.log(newGenera);
+// const newGenera = ["epic nitin", ...genres, "cute genera"];
+// // console.log(newGenera);
 
-//object
+// //object
 
-const updatebooks = { ...book, hasMoviePublication: "20-19-24", pages: 122 };
-// console.log(updatebooks);
-const getYear = (str) => str.split("-")[0];
+// const updatebooks = { ...book, hasMoviePublication: "20-19-24", pages: 122 };
+// // console.log(updatebooks);
+// const getYear = (str) => str.split("-")[0];
 
-const summary = `${title}, a ${pages}-page long book,was written by ${author} and published in ${getYear(
-  publicationDate
-)} ${pages > 1000 ? "over thosand " : "within range"}`;
-console.log(summary);
+// const summary = `${title}, a ${pages}-page long book,was written by ${author} and published in ${getYear(
+//   publicationDate
+// )} ${pages > 1000 ? "over thosand " : "within range"}`;
+// console.log(summary);
+
+const books = getBooks();
+
+const longBookWithMovie = books
+  .filter((book) => book.pages > 500)
+  .filter((book) => book.hasMovieAdaptation);
+console.log(longBookWithMovie);
