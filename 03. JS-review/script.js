@@ -177,4 +177,10 @@ const longBookWithMovie = books
 // console.log(longBookWithMovie);
 
 const pagesAllBooks = books.reduce((acc, book) => acc + book.pages, 0);
-console.log(pagesAllBooks);
+// console.log(pagesAllBooks);
+
+const arr = [2, 3, 5, 4, 1].sort((a, b) => b - a);
+// console.log(arr);
+
+const sortByPages = books.slice().sort((a, b) => a.pages - b.pages);
+// console.log(sortByPages);
