@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import "./index.css";
 
 //Data
 const pizzaData = [
@@ -49,7 +50,7 @@ const pizzaData = [
 
 function App() {
   return (
-    <div>
+    <div className="container">
       <Header />
       <Menu />
       <Footer />
@@ -58,13 +59,43 @@ function App() {
 }
 
 function Header() {
-  return <h1>Fast React Pizza Co.</h1>;
-}
-function Menu(params) {
   return (
-    <div>
+    <header className="header">
+      <h1>Fast React Pizza Co.</h1>
+    </header>
+  );
+}
+function Menu() {
+  return (
+    <main className="menu">
       <h2>Our Menu !</h2>
-      <Pizza />
+      <Pizza
+        name="Focaccia!!!"
+        ingredients="Bread with italian olive oil and rosemary"
+        photoName="/pizzas/focaccia.jpg"
+        price={10}
+      />
+
+      <Pizza
+        name="Pizza Funghi"
+        ingredients="Tomato mushrooms"
+        photoName="pizzas/funghi.jpg"
+        price={12}
+      />
+    </main>
+  );
+}
+
+function Pizza(props) {
+  return (
+    <div className="pizza">
+      <img src={props.photoName} alt={props.name} />
+      <div>
+        {" "}
+        <h3> {props.name}</h3>
+        <p>{props.ingredients}</p>
+        <span>{props.price}</span>
+      </div>
     </div>
   );
 }
@@ -74,23 +105,11 @@ function Footer() {
   const closingHrs = 10;
   const isOpen = hours >= openHrs && hours <= closingHrs;
   return (
-    <footer>{new Date().toLocaleTimeString()} We are currently Open !!</footer>
+    <footer className="footer">
+      {new Date().toLocaleTimeString()} We are currently Open !!
+    </footer>
   );
   // return React.createElement("footer", null, "The world is Open !!!");
-}
-
-function Pizza() {
-  return (
-    <div style={{ border: "1px solid black", margin: "2vmax" }}>
-      <img
-        src="/pizzas/focaccia.jpg"
-        alt="pizza-focaccia"
-        style={{ width: "30vmax", border: "2px solid black" }}
-      />
-      <h2> Focaccia!!!</h2>
-      <p>Bread with italian olive oil and rosemary</p>
-    </div>
-  );
 }
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
