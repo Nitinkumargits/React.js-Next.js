@@ -13,13 +13,16 @@ function App() {
   const [isOpen, setIsOpen] = useState(true);
 
   function closeView() {
-    setIsOpen(!isOpen);
+    setIsOpen((currentIsOpen) => !currentIsOpen);
   }
   function handlePrevious() {
-    if (step > 1) setStep(step - 1);
+    if (step > 1) setStep((currentStep) => currentStep - 1);
   }
   function handleNext() {
-    if (step < 3) setStep(step + 1);
+    if (step < 3) {
+      setStep((currentStep) => currentStep + 1);
+      // setStep((currentStep) => currentStep + 1);//update value based on previous state like before this line
+    }
   }
   return (
     // need this div to start JSX
