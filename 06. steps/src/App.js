@@ -9,6 +9,23 @@ const messages = [
   "Invest your new income 🤑",
 ];
 function App() {
+  return (
+    <div>
+      <Steps />
+      {/* //child-props */}
+      <StepMessage step={1}>
+        <p>Pass in Content</p>
+        <p>👶</p>
+      </StepMessage>
+      <StepMessage step={1}>
+        <p>Reading child props</p>
+        <p>😐</p>
+      </StepMessage>
+    </div>
+  );
+}
+
+function Steps() {
   const [step, setStep] = useState(1);
   const [isOpen, setIsOpen] = useState(true);
 
@@ -38,9 +55,8 @@ function App() {
             <div className={step >= 3 ? "active" : ""}>3</div>
           </div>
 
-          <p className="message">
-            Steps {step}: {step === 0 ? "No step" : messages[step - 1]}
-          </p>
+          <StepMessage step={step}>{messages[step - 1]}</StepMessage>
+
           <div className="buttons">
             <Button bgColor="#7950f2" textColor="#fff" onClick={handlePrevious}>
               <span>👈</span>Previous
@@ -51,6 +67,15 @@ function App() {
           </div>
         </div>
       )}
+    </div>
+  );
+}
+
+function StepMessage({ step, children }) {
+  return (
+    <div className="message">
+      <h3> Steps {step}</h3>
+      {children}
     </div>
   );
 }
