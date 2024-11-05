@@ -32,13 +32,16 @@ export default function App() {
 
   useEffect(
     function () {
+      const controller = new AbortController();
+
       async function fetchMovie() {
         try {
           setIsLoading(true);
           setError("");
 
           const res = await fetch(
-            `http://www.omdbapi.com/?apikey=${KEY}&s=${query}`
+            `http://www.omdbapi.com/?apikey=${KEY}&s=${query}`,
+            { signal: controller.signal }
           );
           if (!res.ok)
             throw new Error("Something went wrong with fetching movies");
@@ -50,7 +53,10 @@ export default function App() {
           setMovies(data.Search);
           setError("");
         } catch (err) {
-          setError(err.message);
+          if (err.name !== "AbortError") {
+            console.log(err.message);
+            setError(err.message);
+          }
         } finally {
           setIsLoading(false);
         }
@@ -60,7 +66,13 @@ export default function App() {
         setError("");
         return;
       }
+      // that I search for something else. And so in this situation,I think that it would be best to close the current movie here. So whenever there is a new search, we simply want to close the movie.
+      handleCloseMovie();
       fetchMovie();
+
+      return function () {
+        controller.abort();
+      };
     },
     [query]
   );
@@ -202,7 +214,6 @@ function MovieDetail({ selectedID, onCloseMovie, onAddWatched, watched }) {
   const [isLoading, setIsLoading] = useState(false);
   const [userRating, setUserRating] = useState("");
   const isWatched = watched.map((movie) => movie.imdbID).includes(selectedID);
-
   const watchedUserRating = watched.find(
     (movie) => movie.imdbID === selectedID
   )?.userRating;
@@ -233,6 +244,23 @@ function MovieDetail({ selectedID, onCloseMovie, onAddWatched, watched }) {
     onAddWatched(newWatchedMovie);
     onCloseMovie();
   }
+
+  useEffect(
+    function () {
+      function callback(e) {
+        if (e.code === "Escape") {
+          onCloseMovie();
+          console.log("closing");
+        }
+      }
+      document.addEventListener("keydown", callback);
+
+      return function () {
+        document.removeEventListener("keydown", callback);
+      };
+    },
+    [onCloseMovie]
+  );
 
   useEffect(
     function () {
