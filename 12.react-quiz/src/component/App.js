@@ -58,6 +58,17 @@ function reducer(currState, action) {
             : currState.highscore,
       };
 
+    case "restart":
+      return { ...initialState, question: currState.question, status: "ready" };
+    // return {
+    //   ...currState,
+    //   points: 0,
+    //   highscore: 0,
+    //   index: 0,
+    //   answer: null,
+    //   status: "ready",
+    // };
+
     default:
       throw new Error("Action unknow");
   }
@@ -120,6 +131,7 @@ export default function App() {
             points={points}
             maxPossiblePoints={maxPossiblePoints}
             highscore={highscore}
+            dispatch={dispatch}
           />
         )}
       </Main>
