@@ -1,14 +1,22 @@
-import { type } from "@testing-library/user-event/dist/type";
-
-function NextButton({ dispatch, answer }) {
+function NextButton({ dispatch, answer, index, numQuesitons }) {
   if (answer === null) return null;
-  return (
-    <button
-      className="btn btn-ui"
-      onClick={() => dispatch({ type: "nextQuestion" })}>
-      Next
-    </button>
-  );
+
+  if (index < numQuesitons - 1)
+    return (
+      <button
+        className="btn btn-ui"
+        onClick={() => dispatch({ type: "nextQuestion" })}>
+        Next
+      </button>
+    );
+  if (index === numQuesitons - 1)
+    return (
+      <button
+        className="btn btn-ui"
+        onClick={() => dispatch({ type: "finished" })}>
+        Finished
+      </button>
+    );
 }
 
 export default NextButton;
