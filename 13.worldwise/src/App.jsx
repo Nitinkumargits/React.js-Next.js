@@ -1,9 +1,9 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import HomePage from "./Pages/HomePage";
-import Products from "./Pages/Products";
-import Pricing from "./Pages/Pricing";
-import PageNotFound from "./Pages/PageNotFound";
-import AppLayout from "./Pages/AppLayout";
+import HomePage from "./pages/HomePage";
+import Products from "./pages/Product";
+import Pricing from "./pages/Pricing";
+import PageNotFound from "./pages/PageNotFound";
+import AppLayout from "./pages/AppLayout.jsx";
 
 function App() {
   return (
@@ -18,5 +18,4 @@ function App() {
     </BrowserRouter>
   );
 }
-
 export default App;
