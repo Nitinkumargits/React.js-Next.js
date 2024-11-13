@@ -3,8 +3,8 @@ import HomePage from "./pages/HomePage";
 import Products from "./pages/Product";
 import Pricing from "./pages/Pricing";
 import PageNotFound from "./pages/PageNotFound";
-import AppLayout from "./pages/AppLayout.jsx";
-
+import AppLayout from "./Pages/AppLayout";
+import Login from "./pages/Login";
 function App() {
   return (
     <BrowserRouter>
@@ -13,6 +13,7 @@ function App() {
         <Route path="product" element={<Products />} />
         <Route path="pricing" element={<Pricing />} />
         <Route path="app" element={<AppLayout />} />
+        <Route path="login" element={<Login />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </BrowserRouter>
