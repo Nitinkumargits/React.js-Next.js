@@ -59,29 +59,6 @@
       }
     },
     {
-      "id": "0a64",
-      "cityName": "Delhi",
-      "country": "India",
-      "emoji": "🇮🇳",
-      "notes": "yeyye",
-      "position": {
-        "lat": "28.590412644572005",
-        "lng": "77.27311219078199"
-      }
-    },
-    {
-      "id": "8fa7",
-      "cityName": "Delhi",
-      "country": "India",
-      "emoji": "🇮🇳",
-      "date": "2024-11-18T17:29:28.000Z",
-      "notes": "dfsdfdsf",
-      "position": {
-        "lat": "28.590412644572005",
-        "lng": "77.27311219078199"
-      }
-    },
-    {
       "id": "f374",
       "cityName": "Bellver de Cerdanya",
       "country": "Spain",
