@@ -3,17 +3,22 @@ import { Link } from "react-router-dom";
 import styles from "./CityItem.module.css";
 import { useCities } from "../contexts/CitiesContext";
 
-const formatDate = (date) =>
-  new Intl.DateTimeFormat("en", {
+const formatDate = (date) => {
+  if (!date || isNaN(new Date(date))) {
+    console.error("Invalid date value:", date);
+    return "Invalid date";
+  }
+  return new Intl.DateTimeFormat("en", {
     day: "numeric",
     month: "long",
     year: "numeric",
   }).format(new Date(date));
+};
 
 function CityItem({ city }) {
   const { currentCity } = useCities();
-
   const { cityName, emoji, date, id, position } = city;
+
   return (
     <li>
       <Link
@@ -23,7 +28,9 @@ function CityItem({ city }) {
         to={`${id}?lat=${position.lat}&lng=${position.lng}`}>
         <span className={styles.emoji}>{emoji}</span>
         <h3 className={styles.name}>{cityName}</h3>
-        <time className={styles.date}>({formatDate(date)})</time>
+        <time className={styles.date}>
+          {date ? `(${formatDate(date)})` : "(Date not available)"}
+        </time>
         <button className={styles.deleteBtn}>&times;</button>
       </Link>
     </li>
