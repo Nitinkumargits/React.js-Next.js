@@ -25,10 +25,8 @@ function App() {
         )
       : posts;
 
-  const handleAddpost = useCallback(() => {
-    function handleAddPost(post) {
-      setPosts((posts) => [post, ...posts]);
-    }
+  const handleAddPost = useCallback(function handleAddPost(post) {
+    setPosts((posts) => [post, ...posts]);
   }, []);
 
   function handleClearPosts() {
@@ -48,7 +46,7 @@ function App() {
       show: "true",
       title: `Post archive in addition to ${posts.length} main post`,
     };
-  }, [posts]);
+  }, [posts.length]);
 
   return (
     <section>
