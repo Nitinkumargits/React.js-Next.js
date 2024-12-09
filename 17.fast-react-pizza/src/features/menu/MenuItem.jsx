@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useDispatch, useSelector } from "react-redux";
 import Button from "../../ui/Button";
-// import DeleteItem from "../cart/DeleteItem";
+import DeleteItem from "../cart/DeleteItem";
 // import UpdateItemQuantity from "../cart/UpdateItemQuantity";
 import { formatCurrency } from "../../utils/helpers";
 import { addItem, getCurrentQuantityById } from "../cart/cartSlice";
@@ -45,7 +45,7 @@ function MenuItem({ pizza }) {
               Sold out
             </p>
           )}
-
+          {isInCart && <DeleteItem pizzaId={id} />}
           {!soldOut && !isInCart && (
             <Button type="small" onClick={handleAddToCart}>
               Add to cart
