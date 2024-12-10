@@ -1,5 +1,41 @@
+import styled from "styled-components";
+
+const H1 = styled.h1`
+  font-size: 30px;
+  font-weight: 600;
+`;
+
+const Button = styled.button`
+  font-size: 1.4rem;
+  padding: 1.2rem;
+  font-weight: 500;
+  border: none;
+  border-radius: 7px;
+  background-color: purple;
+  color: white;
+  margin: 20px;
+  cursor: pointer;
+`;
+const Input = styled.input`
+  border: 3px solid #ddd;
+  border-radius: 5px;
+  padding: 0.8rem 1.2rem;
+`;
+
+const StyledApp = styled.div`
+  background-color: orange;
+  padding: 20px;
+`;
+
 function App() {
-  return <div>Hellow world</div>;
+  return (
+    <StyledApp>
+      <H1>Hellow world</H1>
+      <Button onClick={() => alert("alert")}>Check in.</Button>
+      <Button onClick={() => alert("alert")}>Check out</Button>
+      <Input type="number" placeholder="No. of guests" />
+    </StyledApp>
+  );
 }
 
 export default App;
