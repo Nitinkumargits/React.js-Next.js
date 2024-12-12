@@ -1,7 +1,9 @@
 /* eslint react/prop-types: 0 */
 import styled from "styled-components";
 import { formatCurrency } from "../../utils/helpers";
-
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { deleteCabin } from "../../services/apiCabins";
+import { HiTrash } from "react-icons/hi2";
 const TableRow = styled.div`
   display: grid;
   grid-template-columns: 0.6fr 1.8fr 2.2fr 1fr 1fr 1fr;
@@ -43,7 +45,7 @@ const Discount = styled.div`
 
 export default function CabinRow({ cabin }) {
   const {
-    // id: cabinId,
+    id: cabinId,
     name,
     maxCapacity,
     regularPrice,
@@ -51,6 +53,19 @@ export default function CabinRow({ cabin }) {
     img,
     // description,
   } = cabin;
+
+  const queryClient = useQueryClient();
+  const { isLoading: isDeleting, mutate } = useMutation({
+    mutationFn: (id) => deleteCabin(id), //or//mutationFn: deleteCabin,
+    onSuccess: () => {
+      alert("Cabin succesfully deleted");
+      queryClient.invalidateQueries({
+        queryKey: ["cabins"],
+      });
+    },
+    onError: (err) => alert(err.message),
+  });
+
   return (
     <TableRow role="row">
       <Img src={img} />
@@ -63,7 +78,9 @@ export default function CabinRow({ cabin }) {
         <span>&mdash;</span>
       )}
       <div>
-        <button>Delete</button>
+        <button onClick={() => mutate(cabinId)} disabled={isDeleting}>
+          <HiTrash />
+        </button>
         {/* <button disabled={isCreating} onClick={handleDuplicate}>
             <HiSquare2Stack />
           </button>
