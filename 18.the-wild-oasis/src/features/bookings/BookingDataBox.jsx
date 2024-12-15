@@ -1,3 +1,4 @@
+/* eslint react/prop-types: 0 */
 import styled from "styled-components";
 import { format, isToday } from "date-fns";
 import {
@@ -153,8 +154,7 @@ function BookingDataBox({ booking }) {
         {observations && (
           <DataItem
             icon={<HiOutlineChatBubbleBottomCenterText />}
-            label="Observations"
-          >
+            label="Observations">
             {observations}
           </DataItem>
         )}
