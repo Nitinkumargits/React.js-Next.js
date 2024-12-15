@@ -33,6 +33,8 @@ function BookingDetail() {
   const navigate = useNavigate();
 
   if (isLoading) return <Spinner />;
+  // Handle missing booking data
+  if (!booking) return <p>Booking details could not be found.</p>;
 
   const { status, id: bookingId } = booking;
 
@@ -65,8 +67,7 @@ function BookingDetail() {
           <Button
             icon={<HiArrowUpOnSquare />}
             onClick={() => checkout(bookingId)}
-            disabled={isCheckingOut}
-          >
+            disabled={isCheckingOut}>
             Check out
           </Button>
         )}

@@ -136,14 +136,11 @@ function Uploader() {
         display: "flex",
         flexDirection: "column",
         gap: "8px",
-      }}
-    >
+      }}>
       <h3>SAMPLE DATA</h3>
-
       <Button onClick={uploadAll} disabled={isLoading}>
         Upload ALL
       </Button>
-
       <Button onClick={uploadBookings} disabled={isLoading}>
         Upload bookings ONLY
       </Button>

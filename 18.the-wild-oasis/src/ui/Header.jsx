@@ -1,3 +1,4 @@
+/* eslint react/prop-types: 0 */
 import styled from "styled-components";
 
 const StyledHeader = styled.header`
@@ -6,8 +7,8 @@ const StyledHeader = styled.header`
   border-bottom: 1px solid var(--color-grey-100);
 `;
 
-function Header() {
-  return <StyledHeader>HEADER</StyledHeader>;
+function Header({ chilidren }) {
+  return <StyledHeader>{chilidren}</StyledHeader>;
 }
 
 export default Header;

@@ -1,3 +1,4 @@
+/* eslint react/prop-types: 0 */
 import styled from "styled-components";
 import { format, isToday } from "date-fns";
 import {
@@ -49,11 +50,11 @@ const Amount = styled.div`
 function BookingRow({
   booking: {
     id: bookingId,
-    created_at,
+    // created_at,
     startDate,
     endDate,
     numNights,
-    numGuests,
+    // numGuests,
     totalPrice,
     status,
     guests: { fullName: guestName, email },
@@ -102,16 +103,14 @@ function BookingRow({
           <Menus.List id={bookingId}>
             <Menus.Button
               icon={<HiEye />}
-              onClick={() => navigate(`/bookings/${bookingId}`)}
-            >
+              onClick={() => navigate(`/bookings/${bookingId}`)}>
               See details
             </Menus.Button>
 
             {status === "unconfirmed" && (
               <Menus.Button
                 icon={<HiArrowDownOnSquare />}
-                onClick={() => navigate(`/checkin/${bookingId}`)}
-              >
+                onClick={() => navigate(`/checkin/${bookingId}`)}>
                 Check in
               </Menus.Button>
             )}
@@ -120,8 +119,7 @@ function BookingRow({
               <Menus.Button
                 icon={<HiArrowUpOnSquare />}
                 onClick={() => checkout(bookingId)}
-                disabled={isCheckingOut}
-              >
+                disabled={isCheckingOut}>
                 Check out
               </Menus.Button>
             )}
