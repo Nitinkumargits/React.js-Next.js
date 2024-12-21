@@ -1,3 +1,4 @@
+/* eslint react/prop-types: 0 */
 import styled from "styled-components";
 
 const StyledCheckbox = styled.div`

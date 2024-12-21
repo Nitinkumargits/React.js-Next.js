@@ -106,7 +106,6 @@ function BookingRow({
               onClick={() => navigate(`/bookings/${bookingId}`)}>
               See details
             </Menus.Button>
-
             {status === "unconfirmed" && (
               <Menus.Button
                 icon={<HiArrowDownOnSquare />}
@@ -114,7 +113,6 @@ function BookingRow({
                 Check in
               </Menus.Button>
             )}
-
             {status === "checked-in" && (
               <Menus.Button
                 icon={<HiArrowUpOnSquare />}
@@ -123,7 +121,6 @@ function BookingRow({
                 Check out
               </Menus.Button>
             )}
-
             <Modal.Open opens="delete">
               <Menus.Button icon={<HiTrash />}>Delete booking</Menus.Button>
             </Modal.Open>
