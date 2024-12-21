@@ -14,6 +14,7 @@ function LoginForm() {
   function handleSubmit(e) {
     e.preventDefault();
     if (!email || !password) return;
+    // as this login is a mutate function, we can set some option here eg: onSetteled
     login(
       { email, password },
       {
