@@ -1,3 +1,5 @@
+/* eslint react/prop-types: 0 */
+
 import { useMutation } from "@tanstack/react-query";
 import { signup as signupApi } from "../../services/apiAuth";
 import { toast } from "react-hot-toast";
