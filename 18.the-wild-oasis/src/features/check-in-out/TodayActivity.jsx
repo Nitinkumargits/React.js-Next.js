@@ -1,15 +1,11 @@
-// import { Link } from 'react-router-dom';
 import styled from "styled-components";
-import { box } from "styles/styles";
-// import Button from 'ui/Button';
-import Heading from "ui/Heading";
-import Row from "ui/Row";
-import Spinner from "ui/Spinner";
-import TodayItem from "../dashboard/TodayItem";
-import { useActivityTodayStays } from "./useActivityTodayStays";
+import Heading from "../../ui/Heading";
+import Row from "../../ui/Row.jsx";
+import Spinner from "../../ui/Spinner";
+import TodayItem from "./TodayItem.jsx";
+import useActivityTodayStays from "./useActivityTodayStays.js";
 
 const StyledToday = styled.div`
-  ${box}
   padding: 3.2rem;
   display: flex;
   flex-direction: column;
@@ -37,7 +33,7 @@ const NoActivity = styled.p`
   margin-top: 0.8rem;
 `;
 
-function Today() {
+function TodayActivity() {
   const { isLoading, stays } = useActivityTodayStays();
 
   return (
@@ -65,43 +61,43 @@ function Today() {
   );
 }
 
-export default Today;
+export default TodayActivity;
 
-const OLDdata = [
-  {
-    id: 1,
-    status: "unconfirmed",
-    guests: { fullName: "Jonas Schmedtmann" },
-    numNights: 6,
-  },
-  {
-    id: 2,
-    status: "unconfirmed",
-    guests: { fullName: "Steven Miller" },
-    numNights: 1,
-  },
-  {
-    id: 3,
-    status: "checked-in",
-    guests: { fullName: "John Smith" },
-    numNights: 3,
-  },
-  {
-    id: 4,
-    status: "unconfirmed",
-    guests: { fullName: "Marta Schmedtmann" },
-    numNights: 14,
-  },
-  {
-    id: 5,
-    status: "checked-in",
-    guests: { fullName: "Miguel Silva" },
-    numNights: 5,
-  },
-  {
-    id: 6,
-    status: "checked-in",
-    guests: { fullName: "Mary Williams" },
-    numNights: 4,
-  },
-];
+// const OLDdata = [
+//   {
+//     id: 1,
+//     status: "unconfirmed",
+//     guests: { fullName: "Jonas Schmedtmann" },
+//     numNights: 6,
+//   },
+//   {
+//     id: 2,
+//     status: "unconfirmed",
+//     guests: { fullName: "Steven Miller" },
+//     numNights: 1,
+//   },
+//   {
+//     id: 3,
+//     status: "checked-in",
+//     guests: { fullName: "John Smith" },
+//     numNights: 3,
+//   },
+//   {
+//     id: 4,
+//     status: "unconfirmed",
+//     guests: { fullName: "Marta Schmedtmann" },
+//     numNights: 14,
+//   },
+//   {
+//     id: 5,
+//     status: "checked-in",
+//     guests: { fullName: "Miguel Silva" },
+//     numNights: 5,
+//   },
+//   {
+//     id: 6,
+//     status: "checked-in",
+//     guests: { fullName: "Mary Williams" },
+//     numNights: 4,
+//   },
+// ];
