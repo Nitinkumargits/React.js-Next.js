@@ -3,9 +3,14 @@ import Heading from "../../ui/Heading";
 import Row from "../../ui/Row.jsx";
 import Spinner from "../../ui/Spinner";
 import TodayItem from "./TodayItem.jsx";
-import useActivityTodayStays from "./useActivityTodayStays.js";
+import useTodayActivity from "./useTodayActivity.js";
 
 const StyledToday = styled.div`
+  /* Box */
+  background-color: var(--color-grey-0);
+  border: 1px solid var(--color-grey-100);
+  border-radius: var(--border-radius-md);
+
   padding: 3.2rem;
   display: flex;
   flex-direction: column;
@@ -34,7 +39,7 @@ const NoActivity = styled.p`
 `;
 
 function TodayActivity() {
-  const { isLoading, stays } = useActivityTodayStays();
+  const { isLoading, activities } = useTodayActivity();
 
   return (
     <StyledToday>
@@ -45,10 +50,10 @@ function TodayActivity() {
       </Row>
 
       {!isLoading ? (
-        stays?.length > 0 ? (
+        activities?.length > 0 ? (
           <TodayList>
-            {stays.map((stay) => (
-              <TodayItem key={stay.id} stay={stay} />
+            {activities.map((activity) => (
+              <TodayItem key={activity.id} activity={activity} />
             ))}
           </TodayList>
         ) : (
