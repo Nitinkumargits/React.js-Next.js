@@ -11,16 +11,16 @@ function ReservationForm({ cabin }) {
       <div className="bg-primary-800 text-primary-300 px-16 py-2 flex justify-between items-center">
         <p>Logged in as</p>
 
-        {/* <div className='flex gap-4 items-center'>
+        <div className="flex gap-4 items-center">
           <img
             // Important to display google profile images
-            referrerPolicy='no-referrer'
-            className='h-8 rounded-full'
+            referrerPolicy="no-referrer"
+            className="h-8 rounded-full"
             src={user.image}
             alt={user.name}
           />
           <p>{user.name}</p>
-        </div> */}
+        </div>
       </div>
 
       <p>
@@ -34,8 +34,7 @@ function ReservationForm({ cabin }) {
             name="numGuests"
             id="numGuests"
             className="px-5 py-3 bg-primary-200 text-primary-800 w-full shadow-sm rounded-sm"
-            required
-          >
+            required>
             <option value="" key="">
               Select number of guests...
             </option>
